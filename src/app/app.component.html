@@ -1,20 +1,233 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-toolbar color="primary">
+        <div class='primary'>
+                <div class='slogan'>
+                        <a class='slogan-loja'>
+                                <button mat-icon-button (click)="snav.toggle()">
+                                        <mat-icon>menu</mat-icon>
+                                </button>
+                                <div class='div-slogan-loja' [routerLink]="['/produtos']" routerLinkActive="active">Benfica</div>
+                        </a>
+                </div>
+                <div class='pesquisar'>
+                        <div class="container-1">
+                                <input type="search" id="search" placeholder="Ex: nome, código de barra, preço..." class='login-text' />
+                        </div>
+                </div>
+                <div class='login-register'>
+                        <a href="#" mat-button color="primary" class='login-text'>Login</a> /
+                        <a href="#" mat-button color="primary" class='login-text'>Cadastro</a>
+                </div>
+        </div>
+</mat-toolbar>
+<div class='parent-container'>
+        <mat-sidenav-container class="example-container">
+                <mat-sidenav mode="side" #snav opened>
+                        <div class='container-item-sidenav'>
+                                <div class='config-item simbol'>
+                                        <div>
+                                                <a mat-mini-fab routerLink="." [routerLink]="'/precompra'" routerLinkActive="active">
+                                                        <!-- passar esse código pra um component -->
+                                                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                                                </a>
+                                                <p class='ver-carrinho'>Ver Carrinho</p>
+                                        </div>
+                                </div>
+                                <h4 class='titulo-left-side'>Categorias</h4>
+                                <div class='item-sidenav'>
+                                        <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                                Homem
+                                                        </mat-panel-title>
+                                                </mat-expansion-panel-header>
 
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Camisa</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox  (click)="addFilter($value)"></mat-checkbox> <!--  categorizar(['homem','camisa'], $event)" -->
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Calças</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Acessórios</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Bermudas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Meias e Cuecas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+
+                                        </mat-expansion-panel>
+                                </div>
+                                <div class='item-sidenav'>
+                                        <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                                Mulher
+                                                        </mat-panel-title>
+                                                </mat-expansion-panel-header>
+
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Camisa</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Calças</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Acessórios</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Bermudas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Peças íntimas e meia</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+
+                                        </mat-expansion-panel>
+                                </div>
+                                <div class='item-sidenav'>
+                                        <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                                Infanto M.
+                                                        </mat-panel-title>
+                                                </mat-expansion-panel-header>
+
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Camisa</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Calças</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Acessórios</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Bermudas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Meias e Cuecas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+
+                                        </mat-expansion-panel>
+                                </div>
+                                <div class='item-sidenav'>
+                                        <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                                Infanto F.
+                                                        </mat-panel-title>
+                                                </mat-expansion-panel-header>
+
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Camisa</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Calças</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Acessórios</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Bermudas</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+                                                <div class='subcategory-item'>
+                                                        <p class='subcategory-item-tx'>Peças íntimas e meia</p>
+                                                        <div class='subategory-item-cb'>
+                                                                <mat-checkbox></mat-checkbox>
+                                                        </div>
+                                                </div>
+
+
+                                        </mat-expansion-panel>
+                                </div>
+
+                                <div class='config'>
+                                        <h4 class='titulo-left-side'>Configurações</h4>
+                                        <div class='config-item'>
+                                                <p class='config-item-tx'>Alterar Cadastro</p>
+
+                                        </div>
+                                        <div class='config-item'>
+                                                <p class='config-item-tx'>Produtos</p>
+                                                <i class="fab fa-product-hunt"></i>
+                                        </div>
+                                        <div class='config-item'>
+                                                <p class='config-item-tx'>Vendas</p>
+                                                <i class="fas fa-money-bill-alt"></i>
+                                        </div>
+
+                                        <div class='config-item'>
+                                                <p class='config-item-tx'>Sair</p>
+                                                <i class="fa fa-sign-out-alt"></i>
+
+                                        </div>
+
+                                </div>
+
+                        </div>
+
+
+                </mat-sidenav>
+                <mat-sidenav-content>
+                        <router-outlet></router-outlet>
+                </mat-sidenav-content>
+        </mat-sidenav-container>
+</div>

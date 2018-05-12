@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "skeleton/normalize.css";
+@import "skeleton/skeleton.css";
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+html,body { height: 100%; min-height: 100%; margin: 0px; padding: 0px; position: relative }
+
+
+
+/*--- Useful classes ---*/
+/* This classes help you to improve your responsive layout, this works only on divs,
+you have to put this classes on your divs to position your elements.
+---Sample---:
+<div class="fully-centralized">
+    <button>Signup</button>
+</div>
+This button are on middle screen
+------*/
+
+/*Put your elements on div begin's*/
+.start-horizontally-align{
+    display: flex;
+    justify-content: flex-start;
+}
+
+/*Put your elements on div end's*/
+.end-horizontally-align{
+    display: flex;
+    justify-items: flex-end;
+}
+
+
+/*---Horizontal and vertical centralized---*/
+.fully-centralized{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontally-centralized{
+    display: flex;
+    justify-content: center;
+}
+
+.vertically-centralized{
+    display: flex;
+    align-items: center;
+}
+
+/*Put elements one below the other*/
+.column{
+    display: flex;
+    flex-direction: column;
+}
+/*Elements align on a div equally separated*/
+.horizontally-equals-align{
+    display: flex;
+    justify-content: space-between;
+}
+/*Elements align on a div equally separated with little space*/
+.horizontally-equals-space-align{
+    display: flex;
+    justify-content: space-around;
+}
+
+.vertically-equals-align{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.vertically-equals-space-align{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}

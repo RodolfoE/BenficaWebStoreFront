@@ -1,0 +1,165 @@
+<div class='container-foto-caracteristica'>
+  <div class='app-promocoes'>
+    <app-promocoes></app-promocoes>
+  </div>
+
+  <div class="grid-item" routerLink="/produto" routerLinkActive="active">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title style='font-weight:bold'>Nome do Produto</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <h3>R$59,90</h3>
+      <mat-card-content>
+        <p>Caracteristicas</p>
+        <p>Tamanhos:</p>
+        <div>
+          <mat-button-toggle>P</mat-button-toggle>
+          <mat-button-toggle>M</mat-button-toggle>
+          <mat-button-toggle>G</mat-button-toggle>
+        </div>
+        <ul>
+          <li>
+            Frete Gratuito em compras acima de R$100
+          </li>
+          <li>
+            Devolução grátis abaixo de 7 dias
+          </li>
+        </ul>
+
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+      <div class='div-flex'>
+        <div style='display:inline-block'>
+          <p id='p_qtd'>Quantidade</p>
+          <input type="number" value="50" class='qt_input'>
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary">
+            Comprar
+          </button>
+        </div>
+
+        <div>
+          <button mat-raised-button>
+            <i class="fa fa-shopping-cart fa-1x" style='margin-right:2px;' aria-hidden="true"></i>Add
+          </button>
+        </div>
+
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Comentários -->
+<div class="grid-item-comment">
+  <p class='comentario-header'>Comentários</p>
+  <textarea rows="4" cols="50" class='text-box-comment'>Eu sou apenas um rapaz latino americano, sem dinheiro no banco!</textarea>
+  <div class="btns">
+    <button mat-raised-button color="primary">Enviar</button>
+    <button mat-raised-button>Apagar</button>
+  </div>
+
+  <div class='container-card'>
+    <mat-card class="example-card-comment">
+      <p class='text-tempo-atras-comment'>1 ano atrás</p>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class='comment_title'>Rodolfo Eliezer</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+    </mat-card>
+
+
+    <mat-card class="example-card-comment mgT">
+      <p class='text-tempo-atras-comment'>123 ano atrás</p>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class='comment_title'>Rodolfo Eliezer</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card class="example-card-comment mgT">
+      <p class='text-tempo-atras-comment'>123 ano atrás</p>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class='comment_title'>Rodolfo Eliezer</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card class="example-card-comment mgT">
+      <p class='text-tempo-atras-comment'>123 ano atrás</p>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class='comment_title'>Rodolfo Eliezer</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card class="example-card-comment mgT">
+      <p class='text-tempo-atras-comment'>123 ano atrás</p>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title class='comment_title'>Rodolfo Eliezer</mat-card-title>
+        <mat-card-subtitle>This is a very attractive product you outgh to buy, please subscribe</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
+        <!-- <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>-->
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>
+
+
+<!-- fotos -->
+
+<!--
+      <div class='container-foto'>
+    <section class='section-foto'>
+      <div class='div_foto' (mouseenter)='slideshow.goTo(0)'>
+        <span></span>
+        <img src="assets/produtos/camisas/000001_lacoste_1.jpg" />
+      </div>
+      <div class='div_foto' (mouseenter)='slideshow.goTo(1)'>
+        <span></span>
+        <img src="assets/produtos/camisas/000001_lacoste_1.jpg" />
+      </div>
+      <div class='div_foto' (mouseenter)='slideshow.goTo(2)'>
+        <span></span>
+        <img src="assets/produtos/camisas/000001_lacoste_1.jpg" />
+      </div>
+      <div class='div_foto' (mouseenter)='slideshow.goTo(2)'>
+        <span></span>
+        <img src="assets/produtos/camisas/000001_lacoste_1.jpg" />
+      </div>
+    </section>
+    </div>
+  -->

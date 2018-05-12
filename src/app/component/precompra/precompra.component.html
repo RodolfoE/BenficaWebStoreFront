@@ -1,0 +1,73 @@
+<!-- full page -->
+<div class='row' >
+
+  <!-- produtos -->
+  <div class='produtos'>
+    <!-- produto -->
+    <div class='produto-container' *ngFor='let prod of mProdutosInChart'>
+
+      <!-- closing tag -->
+      <div class='closing-tag'>
+        <span (click)="openDialog(prod)" >
+          <i class="fa fa-times"></i>
+        </span>
+      </div>
+
+      <div class='body-produto'>
+        <img src='{{prod.caminhoFoto[0]}}' alt="Marca" class='produto_foto'>
+
+        <!-- informações do produto -->
+        <div class='informacoes-prod-container'>
+          <h3 class='text-title'>{{prod.nomeProduto}}</h3>
+          <p class='text-description'>{{prod.descricao}}</p>
+          <p class='text-price'>Valor: R${{prod.preco}}</p>
+        </div>
+
+        <div class='ajustes-containner'>
+          <div class='qtd'>
+            <p class='label-qtd'>Qtd: </p>
+            <input type="number" value="{{prod.qtdInChart+1}}" placeholder="ex: 4" class='qtd-input'>
+          </div>
+
+          <div class='tamanho'>
+            <p class='tamanho-label'>Tamanho: </p>
+            <mat-card-actions class='tamanho-input'>
+              <button mat-button [matMenuTriggerFor]="menu">{{prod.tamanhoEscolhido}}</button>
+              <mat-menu #menu="matMenu" >
+                <button *ngFor='let i of prod.tamanhos' (click)="changeSize(prod)" mat-menu-item>{{i}}</button>
+              </mat-menu>
+
+            </mat-card-actions>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- tabela de informação -->
+  <div class='informacoes-container'>
+    <a class='link-finalizar'>
+      <div class='finalizar-btn' (click)='payBuyings()'>
+        <p class='finalizar-btn-tx'>Finalizar</p>
+      </div>
+    </a>
+
+    <div class='info-compra'>
+      <div class='info-preco'>
+        <p class='cell1 price'>Preço total: </p>
+        <p class='cell priceTag'>R$ {{mFullPrice}}</p>
+      </div>
+
+      <div class='info-preco'>
+        <p class='cell1'>Frete: </p>
+        <a class='cell' href='#'>Calcular Frete</a>
+      </div>
+
+      <div class='info-preco'>
+        <p class='descricao'>Descrição: </p>
+        <p>Compras acima de R$100 reais não seŕá cobrado táxa de frete</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div style='clear:both'></div>
+<app-footer class='footer'></app-footer>

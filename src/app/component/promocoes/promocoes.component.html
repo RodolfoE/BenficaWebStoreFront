@@ -1,0 +1,17 @@
+<div class='parent-container' >
+  <div class='container-ctn'>
+    <div class='imagery-container'>
+      <div class='aba-right' (click)='moveCursorToRight()'>
+        <div class='right-arrow'>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+    <img [src]="this.url[this.mPosition]" alt="" class='img'>
+    <div class='aba-left' (click)='moveCursorToLeft()'>
+      <div class='left-arrow'>
+        <i class="fas fa-arrow-left"></i>
+      </div>
+    </div>
+  </div>
+</div>

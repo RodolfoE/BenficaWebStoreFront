@@ -1,0 +1,21 @@
+filtrar produtos
+
+-no leftHandmenu, clico na filtragem 
+    * passando a categoria e subcategoria.
+        - guardo a categoria e subcategoria num array.
+        - Na proxima vez que chamo, guardo novamente.ex:
+            1vez: categoria mulher, calça.
+            2vez: categoria homem, bermuda.
+                * é necessário que mostre as duas categorias.
+    * Passando o preço
+        -guardo a string 'preco' e o valor num array.
+    * passando o preco e a categoria    
+        -A categoria vai primeiro, dps vai o preco
+-na função filtragem é chamado a função filtro dentro do produtosComponents
+-Ao retirar algum filtro, remover no angular o filtro em questão.
+    * só o de preço que não.
+
+issues:
+-qd clica duas vezes no msm botão, vai duas vezes as categorias.
+
+
