@@ -13,9 +13,13 @@
                                 <input type="search" id="search" placeholder="Ex: nome, código de barra, preço..." class='login-text' />
                         </div>
                 </div>
-                <div class='login-register'>
-                        <a href="#" mat-button color="primary" class='login-text'>Login</a> /
-                        <a href="#" mat-button color="primary" class='login-text'>Cadastro</a>
+                <div *ngIf='mCliente == null'>
+                        <a href="#" mat-button color="primary" class='login-text' [routerLink]="['/login']" routerLinkActive="active">Login</a> /
+                        <a [routerLink]="['/cadastro']" routerLinkActive="active" mat-button color="primary" class='login-text'>Cadastro</a>
+                </div>
+                <div *ngIf='mCliente != null'>
+                        <p mat-button color="primary" class='login-text'>{{mCliente.mNome}}</p>
+                        <p mat-button color="primary" class='login-text' (click)='openDialog()'>Sair</p>
                 </div>
         </div>
 </mat-toolbar>
@@ -36,7 +40,7 @@
                                 <div class='item-sidenav'>
                                         <mat-expansion-panel>
                                                 <mat-expansion-panel-header>
-                                                        <mat-panel-title>
+                                                        <mat-panel-title >
                                                                 Homem
                                                         </mat-panel-title>
                                                 </mat-expansion-panel-header>
@@ -44,7 +48,7 @@
                                                 <div class='subcategory-item'>
                                                         <p class='subcategory-item-tx'>Camisa</p>
                                                         <div class='subategory-item-cb'>
-                                                                <mat-checkbox  (click)="addFilter($value)"></mat-checkbox> <!--  categorizar(['homem','camisa'], $event)" -->
+                                                                <mat-checkbox  (click)="categorizar('m', 'Camisa')"></mat-checkbox> <!--  categorizar(['homem','camisa'], $event)" -->
                                                         </div>
                                                 </div>
                                                 <div class='subcategory-item'>

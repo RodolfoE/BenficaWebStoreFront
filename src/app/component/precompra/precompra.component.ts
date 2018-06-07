@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ProdutosInChartService } from '../../services/servico-compartilhado.service';
-import { Produto } from '../../models/produto';
-import { PedidoAoPagSeguro } from '../../models/pedidoAoPagSeguro';
+import { ServicoCompartilhado } from '../../services/servico-compartilhado.service';
+import { ProdutoMod } from '../../models/produto';
+import { PedidoAoPagSeguro } from '../../controller/pedidoAoPagSeguro';
 import { Router } from "@angular/router";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { ProdutosService } from '../../services/produtos.service';
+import { ProdutosService } from '../../services/http/produtos.service';
+
 
 @Component({
   selector: 'app-precompra',
@@ -12,17 +13,16 @@ import { ProdutosService } from '../../services/produtos.service';
   styleUrls: ['./precompra.component.css']
 })
 export class PrecompraComponent implements OnInit {
-  public mProdutosInChart: Produto[];
+  public mProdutosInChart: ProdutoMod[];
   public mFullPrice: any;
 
-  constructor(inChart: ProdutosInChartService,
+  constructor(inChart: ProdutosService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private router: Router,
     private prodService: ProdutosService) {
-    this.mProdutosInChart = inChart.mProdutosInChart;
-    this.getBackToHomePage();
-    this.calculatePrice();
+    //this.getBackToHomePage();
+    //this.calculatePrice();
   }
 
   getBackToHomePage() {
@@ -31,7 +31,7 @@ export class PrecompraComponent implements OnInit {
     }
   }
 
-  openDialog(prod: Produto): void {
+  openDialog(prod: ProdutoMod): void {
     let dialogRef = this.dialog.open(DeleteDialog, {
       width: '250px',
     });
@@ -59,7 +59,7 @@ export class PrecompraComponent implements OnInit {
 
   }
 
-  changeSize(prod: Produto, size: string) {
+  changeSize(prod: ProdutoMod, size: string) {
     //procurar prod com msm id e size igual ao do parametro
     //increase the qtdInChart
     //alterar tamanho do prodId
@@ -67,7 +67,7 @@ export class PrecompraComponent implements OnInit {
   }
 
   //Return the index of the prod in the chart or -1 in case it doesn't exist
-  public indexOfProdOnChart(prod: Produto, tamanho: string) {
+  public indexOfProdOnChart(prod: ProdutoMod, tamanho: string) {
     for (let i = 0; i < this.mProdutosInChart.length; i++) {
       if (this.mProdutosInChart[i]._id == prod._id) {
         if (this.mProdutosInChart[i].tamanhoEscolhido == tamanho) {
@@ -88,9 +88,9 @@ export class PrecompraComponent implements OnInit {
     let pedido: PedidoAoPagSeguro;
     pedido = new PedidoAoPagSeguro();
     pedido.mChart = this.mProdutosInChart;
-    this.prodService.payBuyings(pedido).subscribe(function(param){
-      console.log(param);
-    });
+    //this.prodService.payBuyings(pedido).subscribe(function(param){
+      //console.log(param);
+    //});
   }
 }
 

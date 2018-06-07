@@ -1,10 +1,10 @@
 <div class='produtos-container'>
   <div class='promocoes'>
-      <app-promocoes></app-promocoes>
+    <app-promocoes></app-promocoes>
   </div>
   <div>
     <section class="grid-container">
-      <div *ngFor='let prod of mProdutosListados'>
+      <div *ngFor="let prod of mProdutos">
         <div class="grid-item">
           <mat-card class="example-card">
             <mat-card-header class='header-border' [routerLink]="['/produto', prod._id]" routerLinkActive="active">
@@ -25,31 +25,32 @@
                   <mat-icon>keyboard_arrow_right</mat-icon>
                 </button>
               </div>
-
+              
               <div class="circles">
-                <div class="circleDot" *ngFor="let number of qtFotos" [class.active]="carousel2.index === number" (click)="carousel2.goTo(number)"></div>
+                <div class="circleDot" *ngFor="let number of prod.qtdFoto" [class.active]="carousel2.index === number" (click)="carousel2.goTo(number)"></div>
               </div>
-              <ngx-slideshow #carousel2 [cards]="1" [cardSize]="'250px'" [padding]="'14px'" [resizeViewport]='true'>
+              
+                <ngx-slideshow #carousel2 [cards]="1" [cardSize]="'250px'" [padding]="'14px'" [resizeViewport]='true'> 
                 <li *ngFor='let j of prod.caminhoFoto'>
                   <a [routerLink]="['/produto', prod._id]">
                     <img height="200px" width="250px" src="{{j}}">
                   </a>
                 </li>
-              </ngx-slideshow>
+              </ngx-slideshow> 
             </div>
 
             <mat-card-content>
-              <mat-card-actions>
-                <button class='size-btn' mat-button [matMenuTriggerFor]="menu">
-                  <i class="fa fa-shopping-cart fa-1x" style='margin-right:2px;' aria-hidden="true"></i>Add</button>
+              <mat-card-actions>                  
+                  <button class='size-btn' mat-button [matMenuTriggerFor]="menu">
+                  <i class="fa fa-shopping-cart fa-1x" style='margin-right:2px;' aria-hidden="true"></i>Add</button>  
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item *ngFor='let i of prod.tamanhos' (click)='addProdToChart(prod, i)'>{{i}}</button>
+                   <button mat-menu-item *ngFor='let i of prod.qtdEmTamanhos.tamanhos' (click)='addProdutoAoCarrinho(prod, i)'>{{i}}</button> 
                 </mat-menu>
 
               </mat-card-actions>
               <p>{{prod.descricao}}</p>
               Tamanhos:
-              <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p>
+              <!-- <p style='display:inline' *ngFor='let i of prod.tamanhos'> {{i}} </p> -->
               <p class='preco'>R$ {{prod.preco}}</p>
               <p [hidden]='!prod.freteGratuito'>Frete Gratuito</p>
               <p [hidden]='!prod.freteGratuito'>Calcular Frete</p>

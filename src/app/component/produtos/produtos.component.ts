@@ -1,71 +1,53 @@
-import { Component } from '@angular/core';
-import { ProdutosService } from '../../services/produtos.service';
-import { ProdutosInChartService } from '../../services/servico-compartilhado.service';
-import { Produto } from '../../models/produto';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ProdutosService } from '../../services/http/produtos.service';
+import { Produto } from '../../controller/produto';
+import { ProdutoMod } from './../../models/produto';
+import { Observable } from 'rxjs/Observable';
+import { ClienteService } from './../../services/http/cliente.service';
+import { CompraService } from './../../services/http/compra.service';
+
+import { CarrinhoService } from './../../services/http/carrinho.service';
+
+
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.css'],
-  providers: [ProdutosService]
+  styleUrls: ['./produtos.component.css']
 })
-export class ProdutosComponent {
-  mProdutosListados: Produto[];
-  mProdutos: Produto[];
 
-  filtrar(args: Produto) {
-    console.log(JSON.stringify(args));
-    for (let i = 0; i < this.mProdutosListados.length; i++) {
-      if (this.mProdutosListados[i].preco < args.preco) {
-        console.log(this.mProdutosListados[i].preco + '<' + args.preco);
+export class ProdutosComponent implements OnInit {
+  mObservable: any;
+  mProdutos: ProdutoMod[];
 
-      } else {
-        this.mProdutosListados.splice(i, 1);
-        console.log(this.mProdutosListados[i].preco + '>' + args.preco);
-      }
+  constructor(private produtosService: ProdutosService,
+    private clienteService: ClienteService,
+    private carrinhoService: CarrinhoService,
+    private compraService: CompraService) {
+    
+    if (produtosService.mProdutos != null){
+      this.mProdutos = produtosService.mProdutos;
     }
-    console.log(this.mProdutosListados);
 
+    this.produtosService.test.subscribe(prods => {
+      this.mProdutos = prods;
+      console.log(this.mProdutos);
+    })
+    if (clienteService.mCliente != null) {
+      this.carrinhoService.getCarrinhoClinte(clienteService.mCliente);
+      this.produtosService.listarProdutosNoPerfilDoCliente(clienteService.mCliente);
+    }
   }
 
-  constructor(private produtosService: ProdutosService, public inChart: ProdutosInChartService) {
-    this.mProdutosListados = [];
-    this.mProdutos = [];
-    this.produtosService.getProdutosWithFullResponse()
-      .subscribe((produtos) => {
-        console.log(produtos.headers.keys().map(key => `${key}: ${produtos.headers.get(key)}`))
-        this.mProdutosListados = produtos.body;
-        for (let i = 0; i < produtos.body.length; i++) {  
-          for (let j = 0; j < produtos.body[i].caminhoFoto.length; j++) {
-            this.mProdutosListados[i].qtdFoto = [];
-            this.mProdutosListados[i].qtdFoto.push(j);
-            this.mProdutosListados[i].qtdInChart = 0;
-          }
-          inChart.mProdutos.push(produtos.body[i]);
-        }
-        this.mProdutos = this.mProdutosListados;
-      });
-  }
-
-  public addProdToChart(prod: Produto, tamanho: string) {
-    let index = this.indexOfProdOnChart(prod,tamanho);
-    if (index == -1) {
+  addProdutoAoCarrinho(prod: ProdutoMod, tamanho: string) {
+    if (this.clienteService.mCliente != null) {
       prod.tamanhoEscolhido = tamanho;
-      console.log(prod)
-      this.inChart.addProdToChart(prod);
+      this.carrinhoService.addItemAoCarrinho(prod, this.clienteService.mCliente);
     } else {
-        this.inChart.mProdutosInChart[index].qtdInChart++;  
+      console.log("Cliente não logado");
     }
   }
 
-  //Return the index of the prod in the chart or -1 in case it doesn't exist
-  public indexOfProdOnChart(prod: Produto, tamanho:string) {
-    for (let i = 0; i < this.inChart.mProdutosInChart.length; i++) {
-      if (this.inChart.mProdutosInChart[i]._id == prod._id) {
-        if (this.inChart.mProdutosInChart[i].tamanhoEscolhido == tamanho){
-          return i;          
-        }
-      }
-    }
-    return -1;
+  ngOnInit() {
+
   }
 }

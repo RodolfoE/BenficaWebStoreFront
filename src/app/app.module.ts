@@ -35,8 +35,11 @@ import {
   MatTooltipModule,
   MatStepperModule
 } from '@angular/material'
-import { ProdutosService } from './services/produtos.service'
-import { ProdutosInChartService } from './services/servico-compartilhado.service';
+import { ProdutosService } from './services/http/produtos.service'
+import { CompraService } from './services/http/compra.service'
+import { ClienteService } from './services/http/cliente.service'
+
+import { ServicoCompartilhado } from './services/servico-compartilhado.service';
 import { BodyComponent } from './component/body/body.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LeftSideMenuComponent } from './component/leftSideMenu/leftsidemenu.component';
@@ -51,6 +54,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FooterComponent } from './component/footer/footer.component';
 import { PrecompraComponent } from './component/precompra/precompra.component';
 import { DeleteDialog } from './component/precompra/precompra.component';
+import { CadastroComponent } from './component/cadastro/cadastro.component';
+import { LoginComponent } from './component/login/login.component';
+import { CarrinhoService } from "./services/http/carrinho.service";
+
 
 
 
@@ -65,7 +72,9 @@ import { DeleteDialog } from './component/precompra/precompra.component';
     ProdutoComponent,
     FooterComponent,
     PrecompraComponent,
-    DeleteDialog
+    DeleteDialog,
+    CadastroComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -108,7 +117,7 @@ import { DeleteDialog } from './component/precompra/precompra.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProdutosService, ProdutosInChartService],
+  providers: [ProdutosService, ClienteService, CarrinhoService, CompraService],
   bootstrap: [AppComponent],
   entryComponents: [DeleteDialog]
 })

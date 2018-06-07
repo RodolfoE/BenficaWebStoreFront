@@ -1,48 +1,49 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
+import { ClienteMod } from '../../models/cliente';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { Produto } from '../models/produto';
-import { FormatarstringService } from './formatarstring.service'
+import { FormatarstringService } from './../formatarstring.service'
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
-import { PedidoAoPagSeguro } from '../models/pedidoAoPagSeguro';
-
+import { CompraMod } from './../../models/compra';
+import { ProdutoMod } from './../../models/produto'
 
 @Injectable()
-export class ProdutosService {
-  formatacao: FormatarstringService;
+export class ClienteService {
   domain: string = 'http://localhost:3000';
-  constructor(private http: HttpClient) {
-    this.formatacao = new FormatarstringService();
+  mCliente: ClienteMod;
+  @Output() emmiter: EventEmitter<ClienteMod> = new EventEmitter();
+
+  constructor(private http: HttpClient) { }
+
+  initCliente(client: ClienteMod){
+    this.mCliente = client;
+    this.emmiter.emit(this.mCliente);
   }
 
-  getProdutos() {
-    return this.http.get<Produto[]>(this.domain + '/api/produtos')
+  deslogarCliente(){
+    this.mCliente = null;
+    this.emmiter.emit(null);
+  }
+
+  getClientes() {
+    return this.http.get<ClienteMod[]>(this.domain + '/api/produtos')
       .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
       )
-      .map(res => <Produto>res);
+      .map(res => <ClienteMod>res);
   }
 
-  getProdutosWithFullResponse(): Observable<HttpResponse<Produto[]>> {
-    return this.http.get<Produto[]>(this.domain + '/api/produtos', { observe: 'response' })
-      .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-      )
-      .map(res => res);
-  }
-
-  payBuyings(chart:PedidoAoPagSeguro) {
+  fzrLogin(cliente){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(this.domain + '/api/checkOut', JSON.stringify(chart), httpOptions)
+    return this.http.post(this.domain + '/cli/login', JSON.stringify(cliente), httpOptions)
       .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
@@ -50,19 +51,13 @@ export class ProdutosService {
       .map(res => res);
   }
 
-
-  getProduto(id: string) {
-    return this.http.get<Produto>(this.domain + '/api/produto/' + id).map(res => res);
-  }
-
-
-  getProdutosFiltrados(filtro) {
+  addCliente(Cliente: ClienteMod) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<Produto[]>(this.domain + '/api/produtos', JSON.stringify(filtro), httpOptions)
+    return this.http.post(this.domain + '/cli/cadastro_cliente', JSON.stringify(Cliente), httpOptions)
       .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
@@ -70,19 +65,20 @@ export class ProdutosService {
       .map(res => res);
   }
 
-  addTask(newTask) {
-    return this.http.post<Produto>(this.domain + '/api/produtos', newTask)
-      .map(res => res);
+  public exibirHistoricoDeCompra(): CompraMod {
+    return null;
   }
 
-  deleteTask(id) {
-    return this.http.delete(`$(this.domain)/api/tasks/$(id)`)
-      .map(res => res);
+  public exibirHistoricoDeCompraPorData(ascen: boolean): CompraMod {
+    return null;
   }
 
-  updateTask(newTask) {
-    return this.http.put(`$(this.domain)/api/tasks/$(newTask.id)`, newTask)
-      .map(res => res);
+  public exibirProdutosDestePerfil(): ProdutoMod[] {
+    return null;
+  }
+
+  public addNovaCompra(compra: CompraMod) {
+
   }
 
   private handleError(error: HttpErrorResponse) {

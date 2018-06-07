@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Produto } from '../models/produto';
+import { ProdutoMod } from '../models/produto';
+import { Produto } from '../controller/produto';
+import { ProdutosService } from '../services/http/produtos.service';
 
 @Injectable()
-export class ProdutosInChartService {
-  public mProdutos: Produto[];
-  public mProdutosInChart: Produto[];
-  constructor() {
-    this.mProdutos = [];
-    this.mProdutosInChart = [];
+export class ServicoCompartilhado {
+  public mProdutosController: Produto;
+
+  constructor(private produtosService: ProdutosService) {
+    this.mProdutosController = new Produto(produtosService);
+  }  
+
+  listarTdsProdutos(obs: any){
+    this.mProdutosController.listarTdsProdutos(obs);
   }
 
-  public addProdToChart(prod: Produto){
-    this.mProdutosInChart.push(prod);
-    console.log(this.mProdutosInChart)
+  ordenarPorGenero(genero: string){
+    this.mProdutosController.buscarProdPorGenero(genero);
   }
 
-  
+  ordenarPorCategoriaeGenero(cat: string, genero: string){
+    this.mProdutosController.buscarProdPorcategoria(cat, genero);
+  }
 
+  ordenarPorPreco(precoMax: number, precoMin: number){
+    this.mProdutosController.buscarProdPorPreco(precoMax, precoMin);
+  }
+
+  ordenarPorMarca(marca: string){
+    this.mProdutosController.buscarProdPorMarca(marca);
+  }
+
+  ordenarPorCodigoDeBarra(cod: string){
+    this.mProdutosController.buscarProdPorCodigo(cod);
+  }
 }

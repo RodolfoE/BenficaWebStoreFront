@@ -1,0 +1,75 @@
+<div class='main-container'>
+  <div class='personal-info'>
+    <img src="assets/photo.jpeg" alt="">
+
+    <p>Informações Pessoais</p>
+    <div class='nome'>
+      Nome:
+      <input type="text" value="Rodolfo Abrantes" [(ngModel)]='mCliente.mNome'>
+    </div>
+    <div class='nome'>
+      Usuario:
+      <input type="text" value="Rodolfo" [(ngModel)]='mCliente.mUsuario'>
+    </div>
+    <div class='nome'>
+      Senha:
+      <input type="text" value="556556" [(ngModel)]='mCliente.mSenha'>
+    </div>
+    <div class='nome'>
+      Confirmar senha:
+      <input type="text" value="5565563" [(ngModel)]='mCliente.mSenha'>
+    </div>
+    <div class='nome'>
+      E-mail:
+      <input type="text" value="Rodolfo_Abrantes@hotmail.com" [(ngModel)]='mCliente.mEmail'>
+    </div>
+    <div class='nome'>
+      Genero:
+      <input type="text" value="m" [(ngModel)]='mCliente.mGenero'>
+    </div>
+    <div class='nome'>
+      Idade:
+      <input type="text" value="26" [(ngModel)]='mCliente.mIdade'>
+    </div>
+  </div>
+
+  <p>Endereco</p> 
+  <div class='endereco'>
+    <div class='personal-info'>
+      <div class='nome'>
+        Cep:
+        <input type="text" value="32242-450" [(ngModel)]='mCliente.mEndereco.postalCode'>
+      </div>
+      <div class='nome'>
+        Rua:
+        <input type="text" value="Rua Moacir de Andrade" [(ngModel)]='mCliente.mEndereco.street'>
+      </div>
+      <div class='nome'>
+        Número:
+        <input type="text" value="141" [(ngModel)]='mCliente.mEndereco.number'>
+      </div>
+      <div class='nome'>
+        Bairro:
+        <input type="text" value="Durval De Barros" [(ngModel)]='mCliente.mEndereco.district'>
+      </div>
+      <div class='nome'>
+        Cidade:
+        <input type="text" value="Contagem" [(ngModel)]='mCliente.mEndereco.city'>
+      </div>
+      <div class='nome'>
+        Estado:
+        <input type="text" value="Minas Gerais" [(ngModel)]='mCliente.mEndereco.state'>
+      </div>
+      <div class='nome'>
+        Complemento:
+        <input type="text" value=" " [(ngModel)]='mCliente.mEndereco.complement'>
+      </div>
+      <div class='nome'>
+        Ponto de Referência:
+        <input type="text" value="Igreja Católica" [(ngModel)]='mCliente.mEndereco.pontoRef'>
+      </div>
+  
+      <button>Cancelar</button>
+      <button (click)='salvarCadastro()'>Salvar</button>
+  </div>
+</div>

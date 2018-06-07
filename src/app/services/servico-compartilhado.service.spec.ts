@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ProdutosInChartService } from './servico-compartilhado.service';
+import { ServicoCompartilhado } from './servico-compartilhado.service';
 
 describe('ServicoCompartilhadoService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProdutosInChartService]
+      providers: [ServicoCompartilhado]
     });
   });
 
-  it('should be created', inject([ProdutosInChartService], (service: ProdutosInChartService) => {
+  it('should be created', inject([ServicoCompartilhado], (service: ServicoCompartilhado) => {
     expect(service).toBeTruthy();
   }));
 });

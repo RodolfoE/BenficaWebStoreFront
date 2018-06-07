@@ -1,2 +1,15 @@
-export class Envio {
+import {CompraMod} from './compra';
+
+export class EnvioMod{
+    mCompra:CompraMod;
+    mData: Date;
+    _idEnvio: string;
+    isPostadoAoCorreio:boolean;
+    mResponsavelPelaPostagem:string;
+    isEntrege:boolean;
+    mResponsavelPelaEntrega: string; //quem disse que já foi entregue!
+
+    constructor(){
+        
+    }
 }

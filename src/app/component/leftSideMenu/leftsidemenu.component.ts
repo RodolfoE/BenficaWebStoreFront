@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild,  ElementRef ,Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Produto } from '../../models/produto';
+import { Produto } from '../../controller/produto';
+import { ProdutosService } from './../../services/http/produtos.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Produto } from '../../models/produto';
   outputs: ['filtrar']
 })
 export class LeftSideMenuComponent {
-
+  /*
   public filtrar: EventEmitter<any> = new EventEmitter();
   mProduto: Produto;
   mArrayCategorias = [];
@@ -31,9 +32,9 @@ export class LeftSideMenuComponent {
   value = 0;
   vertical = false;
 
-  constructor(private rd: Renderer2, public mNav: ElementRef) {
-    this.mProduto = new Produto();
-    this.mProduto.categorias = [];
+  constructor(private rd: Renderer2, public mNav: ElementRef, private produtosService: ProdutosService) {
+    this.mProduto = new Produto(produtosService);
+    this.mProduto.mProdutos.categorias = [];
     this.mMulherCalca = false;
   }
 
@@ -112,7 +113,7 @@ export class LeftSideMenuComponent {
         console.log('Removido Item abaixo:');
         console.log(JSON.stringify(itemRemovido));
         if (this.mProduto.categorias.length == 0){
-          this.mProduto = new Produto();
+          this.mProduto = new Produto(this.produtosService);
         }
         
         this.filtrar.next(this.mProduto);
@@ -126,5 +127,5 @@ export class LeftSideMenuComponent {
     this._tickInterval = Number(v);
   }
   private _tickInterval = 2;
-
+*/
 }
